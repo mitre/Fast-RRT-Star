@@ -1,0 +1,5 @@
+<library path="lib/libfast_rrt_star_planner_lib">
+	<class name="fast_rrt_star_planner/Fast_RRTStarPlanner" type="fast_rrt_star_planner::Fast_RRTStarPlanner" base_class_type="nav_core::BaseGlobalPlanner">
+		<description>This is a global planner plugin that uses the Fast-RRT* algorithm.</description>
+	</class>
+</library>

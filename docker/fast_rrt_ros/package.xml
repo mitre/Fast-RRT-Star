@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+	<name>fast_rrt_ros</name>
+	<version>1.0.0</version>
+	<description>The fast_rrt_ros package</description>
+
+	<maintainer email="bcanaday@mitre.org">Bradley Canaday</maintainer>
+	<license>MIT</license>   
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<build_depend>roscpp</build_depend>
+	<build_depend>rospy</build_depend>
+	<build_depend>std_msgs</build_depend>
+	<build_depend>costmap_2d</build_depend>
+	<build_depend>nav_core</build_depend>
+	<build_depend>base_local_planner</build_depend>
+	<build_export_depend>roscpp</build_export_depend>
+	<build_export_depend>rospy</build_export_depend>
+	<build_export_depend>std_msgs</build_export_depend>
+	<exec_depend>roscpp</exec_depend>
+	<exec_depend>rospy</exec_depend>
+	<exec_depend>std_msgs</exec_depend>
+	<exec_depend>costmap_2d</exec_depend>
+	<exec_depend>nav_core</exec_depend>
+	<exec_depend>base_local_planner</exec_depend>
+
+	<export>  
+		<nav_core plugin="${prefix}/fast_rrt_star_planner_plugin.xml" />
+	</export>
+</package>
