@@ -21,19 +21,19 @@ ROS Global Path Planner Plugin implementation of the [Fast-RRT* algorithm](https
 
 ## Pseudocode
 
-<img src="./docker/fast_rrt_ros/docs/fast_rrt.PNG" width="500">
+<img src="./docs/fast_rrt.PNG" width="500">
 
 Fast-RRT* is more optimal than its predecessors RRT and RRT* through its novel method of creating an additional node when planning around obstacles. 
 
 The node placement draws upon the observation that paths that traverse closer to obstacles in the environment tend to be shorter, or more optimal, overall. 
 
-Check out the [documentation file](./docker/fast_rrt_ros/docs/Fast_RRTdocumentation.md) for an in depth explanation of how the Fast-RRT* functions work.
+Check out the [documentation file](./docs/Fast_RRTdocumentation.md) for an in depth explanation of how the Fast-RRT* functions work.
 
 ## ROS
 
 The Fast-RRT* code is a plugin to the `global_planner` in the [move_base](http://wiki.ros.org/move_base) navigation stack.
 
-<img src="./docker/fast_rrt_ros/docs/move_base.png" width="700">
+<img src="./docs/move_base.png" width="700">
 
 This has been tested on the following ROS 1 distributions:
 
@@ -73,7 +73,7 @@ We have containerized our planner to make testing quick and easy. Due to the use
 
 Once you have setup Docker and a way of displaying GUI applications running inside a Docker container, **check the sections below**.
 
-Next, build the docker image and run the container with the included bash script: [build_and_run_docker.bash](./build_and_run_docker.bash).
+Next, build the docker image and run the container with the included bash script: `./docker/build_and_run_docker.bash`. **NOTE**: Do not run this script from the `docker` folder.
 
 Assuming nothing went wrong you should now be inside the husky image container.
 
@@ -81,11 +81,11 @@ Assuming nothing went wrong you should now be inside the husky image container.
 
 There are two important locations inside the container - `/opt/ros/$ROS_DISTRO` where all the ros debian packages such as the husky stack are installed and `/root/catkin_ws` which contains any source packages.
 
-`/root/catkin_ws` contains a `scripts` and a `src` folder. The former contains scripts for running Gazebo, Rviz, and the planner in various modes. The latter contains the source code for the Fast-RRT* planner which was copied into the image from [docker/fast_rrt_ros](./docker/fast_rrt_ros/).
+`/root/catkin_ws` contains a `scripts` and a `src` folder. The former contains scripts for running Gazebo, Rviz, and the planner in various modes. The latter contains the source code for the Fast-RRT* planner which was copied into the image.
 
-Other than the planner source code, you can also modify the husky description and navigation launch files found in `/opt/ros/$ROS_DISTRO/share/husky_description` and `/opt/ros/$ROS_DISTRO/share/husky_navigation` respectively. Modified versions are included in the [docker](./docker/) folder and are copied into the image when the [Dockerfile](./docker/Dockerfile) is built by [build_and_run_docker.bash](./build_and_run_docker.bash).
+Other than the planner source code, you can also modify the husky description and navigation launch files found in `/opt/ros/$ROS_DISTRO/share/husky_description` and `/opt/ros/$ROS_DISTRO/share/husky_navigation` respectively. Modified versions are included in the [docker](./docker/) folder and are copied into the image when the [Dockerfile](./docker/Dockerfile) is built by [build_and_run_docker.bash](./docker/build_and_run_docker.bash).
 
-The [Fast-RRT* planner configuration file](./docker/fast_rrt_ros/config/planner.yaml) is copied into the appropriate location in the image as specified in the [Dockerfile](./docker/Dockerfile). This has parameters that control the behavior of the planner and should be adjusted before running the docker container.
+The [Fast-RRT* planner configuration file](./config/planner.yaml) is copied into the appropriate location in the image as specified in the [Dockerfile](./docker/Dockerfile). This has parameters that control the behavior of the planner and should be adjusted before running the docker container.
 
 The [husky description](./docker/husky_description/urdf/husky.urdf.xacro) was modified from the default to enable the LiDAR sensor.
 

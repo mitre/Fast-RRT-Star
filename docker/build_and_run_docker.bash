@@ -15,7 +15,7 @@ then
 fi
 
 # Build husky_image from Dockerfile in this directory
-docker build -t husky_image ./docker/
+docker build -t husky_image -f ./docker/Dockerfile .
 
 # Run husky_image with specified environment variables, volume mounting, and host networking
 docker run \
